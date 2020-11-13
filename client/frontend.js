@@ -24,7 +24,6 @@ async function formSubmit() {
         <h4 class="card-title"><p id="card-text">Email-adress: </p>${newUserData.email}</h4>
         <p class="card-text"><p id="card-text">Password: </p>${newUserData.password}</p>
         <p class="card-text"><p id="card-text">ID: </p><p id="card-id">${newUserData.id}</p></p>
-        <button class="delete remove" id="card-delete-btn">Delete</button>
       </div>
     `
     userDataList.push(userCardTemplate);
@@ -45,7 +44,6 @@ btnShow.addEventListener('click', async function() {
       <h4 class="card-title"><p id="card-text">Email-adress: </p>${e.email}</h4>
       <p class="card-text"><p id="card-text">Password: </p>${e.password}</p>
       <p class="card-text"><p id="card-text">ID: </p><p id="card-id">${e.id}</p></p>
-      <button class="delete remove" id="card-delete-btn">Delete</button>
     </div>
   `;
     passwordsList.insertAdjacentHTML('beforeend', data);
@@ -59,10 +57,9 @@ btnFind.addEventListener('click', async function() {
   const userById = await request(`/api/cards/find/${id}`);
   passwordsList.innerHTML = `
     <div class="card">
-      <h4 class="card-title"><p id="card-text">Email-adress: </p>${userById[0].email}</h4>
-      <p class="card-text"><p id="card-text">Password: </p>${userById[0].password}</p>
-      <p class="card-text"><p id="card-text">ID: </p><p id="card-id">${userById[0].id}</p></p>
-      <button class="delete remove" id="card-delete-btn">Delete</button>
+      <h4 class="card-title"><p id="card-text">Email-adress: </p>${userById.email}</h4>
+      <p class="card-text"><p id="card-text">Password: </p>${userById.password}</p>
+      <p class="card-text"><p id="card-text">ID: </p><p id="card-id">${userById.id}</p></p>
     </div>
   `;
   searchInput.value = '';
